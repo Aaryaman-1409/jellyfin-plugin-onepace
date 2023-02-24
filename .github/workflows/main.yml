@@ -42,6 +42,7 @@ jobs:
     
     - name: Download a Build Artifact
       uses: actions/download-artifact@v3.0.2
+      id: download
       with:
         # Artifact name
         name: ${{ steps.version.outputs.version }}
@@ -52,4 +53,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: latest
-        files: ./releases/*
+        files: ${{steps.download.outputs.download-path}}
