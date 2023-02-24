@@ -47,10 +47,10 @@ jobs:
         # Artifact name
         name: ${{ steps.version.outputs.version }}
         # Destination path
-        path: ./releases
+        path: releases
      
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: latest
-        files: ${{steps.download.outputs.download-path}}/${{ steps.version.outputs.version }}
+        files: ${{steps.download.outputs.download-path}}/*
