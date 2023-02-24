@@ -31,6 +31,7 @@ jobs:
       with:
         release-branch: master
         prefix: one-pace-
+        log-path: ./
       
         
     - name: Upload a Build Artifact
@@ -50,4 +51,5 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: latest
         files: ./releases/*
