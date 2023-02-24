@@ -30,11 +30,12 @@ jobs:
       uses: codacy/git-version@2.4.0
       with:
         release-branch: master
-        prefix: one-pace
+        prefix: one-pace-
         log-paths: ./
+      
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: echo ${{ steps.version.outputs.version }} 
+        name: ${{ steps.version.outputs.version }} 
         path: ./**/bin/Debug/net6.0/JWueller.Jellyfin.OnePace.dll
