@@ -31,7 +31,6 @@ jobs:
       with:
         release-branch: master
         prefix: one-pace-
-        log-paths: ./
       
         
     - name: Upload a Build Artifact
@@ -39,3 +38,16 @@ jobs:
       with:
         name: ${{ steps.version.outputs.version }} 
         path: ./**/bin/Debug/net6.0/JWueller.Jellyfin.OnePace.dll
+    
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.2
+      with:
+        # Artifact name
+        name: ${{ steps.version.outputs.version }}
+        # Destination path
+        path: ./releases
+     
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./releases/*
